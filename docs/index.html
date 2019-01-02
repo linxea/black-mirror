@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+		/>
+		<title></title>
+		<style>
+			body {
+				height: 100vh;
+				margin: 0;
+				padding: 0;
+				font-family: sans-serif;
+    		font-weight: 300;
+			}
+
+			a {
+				text-decoration: none;
+				color: inherit;
+			}
+
+			.fake-cinematic-overlay::before, .fake-cinematic-overlay::after {
+				content:'';
+				width: 100vw;
+				height: 10%;
+				position: absolute;
+				background-color: black;
+			}
+
+			.fake-cinematic-overlay::before {
+				top: 0;
+			}
+
+			.fake-cinematic-overlay::after {
+				bottom: 0;
+			}
+
+			.make-your-choice {
+				position: absolute;
+				background-color: black;
+				padding-top: 7vh;
+				height: 5vh;
+				width: 100vw;
+				bottom: 0;
+				display: flex;
+				text-align: center;
+				animation: 2s show-option 2s, 0.3s word-color-change-white 3s, 1s word-color-change-black 8s, 2s hide-option 11s;
+				animation-fill-mode: forwards;
+			}
+
+			.make-your-choice:before, .make-your-choice:after {
+				content: '';
+				position: absolute;
+				top: 0;
+				height: 3px;
+				width: 50vw;
+				animation: 1.5s border-color-change-white 3s, 4s reduce-width 6s;
+				animation-fill-mode: forwards;
+				transition-timing-function: ease-out;
+			}
+
+			@keyframes reduce-width {
+				100% {
+					width: 0;
+				}
+			}
+
+			.make-your-choice:before {
+				left: 50vw;
+			}
+
+			.make-your-choice:after {
+				right: 50vw;
+			}
+
+			.choice {
+				flex: 1;
+				cursor: pointer;
+				transition: 0.3s ease-in-out;
+			}
+
+			.choice:after {
+				content: '';
+				border-bottom: 1px solid transparent;
+				width: 70px;
+				position: absolute;
+				bottom: 0;
+				margin-left: -45px;
+				transition: 0.3s;
+			}
+
+			.choice:hover {
+				color: white;
+			}
+
+			.choice:hover::after {
+				color: white;
+				border-bottom: 1px solid white;
+			}
+
+			#yes {
+				animation: 1s highlight-white 8s, 1s word-color-change-black 10s;
+				animation-fill-mode: forwards;
+			}
+
+			@keyframes show-option {
+				100% {
+					bottom: 10vh;
+				}
+			}
+
+			@keyframes hide-option {
+				100% {
+					bottom: -5vh;
+				}
+			}
+
+			@keyframes word-color-change-white {
+				0% {
+					color: black;
+				}
+
+				100% {
+					color: rgba(255,255,255,0.6);
+				}
+			}
+
+			@keyframes word-color-change-black {
+				100% {
+					color: black;
+				}
+			}
+
+			@keyframes border-color-change-white {
+				0% {
+					background-color: black;
+				}
+
+				100% {
+					background-color: white;
+				}
+			}
+
+			@keyframes highlight-white {
+				0% {
+					color: rgba(255,255,255,0.6);
+				}
+				99% {
+					color: rgba(255,255,255,0.6);
+				}
+				100% {
+					color: white;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<iframe width="100%%" height="100%" src="https://www.youtube.com/embed/ASmi0IYsu0Q?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		<div class="fake-cinematic-overlay"></div>
+		<div class="make-your-choice">
+			<a id="yes" class="choice" href="https://toomuchome.com">YES</a>
+			<a class="choice" href="https://toomuchome.com">NO</a>
+		</div>
+	</body>
+</html>
